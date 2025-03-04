@@ -16,4 +16,10 @@ if util.is_windows() then
     config.default_prog = { "ubuntu2404.exe" }
 end
 
+local ok, overrides = pcall(require, "config.overrides")
+
+if ok then
+    config = util.merge_tables(config, overrides or {})
+end
+
 return config
