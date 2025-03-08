@@ -8,7 +8,7 @@ require("config.colors").register(config)
 require("config.keys").register(config)
 
 config.font = wezterm.font("Cascadia Code")
-config.font_size = 13
+config.font_size = 14
 config.default_cursor_style = "BlinkingBar"
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.canonicalize_pasted_newlines = "LineFeed"
