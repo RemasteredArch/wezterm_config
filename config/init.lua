@@ -40,4 +40,18 @@ if ok then
     util.merge_into(config, overrides or {})
 end
 
+-- Disable tab bar in full screen.
+wezterm.on("window-resized", function(window, _)
+    local enable_tab_bar = not window:get_dimensions().is_full_screen
+
+    local overrides = window:get_config_overrides() or {}
+    -- Only set overrides if the setting will actually change to avoid needlessly firing the event.
+    local will_change = overrides.enable_tab_bar ~= enable_tab_bar
+
+    if will_change then
+        overrides.enable_tab_bar = enable_tab_bar
+        window:set_config_overrides(overrides)
+    end
+end)
+
 return config
