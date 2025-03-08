@@ -16,10 +16,26 @@ config.window_close_confirmation = "NeverPrompt"
 
 if util.is_windows() then
     config.default_prog = { "ubuntu2404.exe" }
+
+    config.launch_menu = {
+        {
+            label = "PowerShell",
+            args = { "powershell.exe", "-NoLogo" }
+        },
+        {
+            label = "Command Prompt",
+            args = { "cmd.exe" }
+        },
+        {
+            label = "Ubuntu 24.04",
+            args = { "ubuntu2404.exe" }
+        }
+    }
 end
 
-local ok, overrides = pcall(require, "config.overrides")
+require("config.keys").register_launchers(config)
 
+local ok, overrides = pcall(require, "config.overrides")
 if ok then
     util.merge_into(config, overrides or {})
 end
