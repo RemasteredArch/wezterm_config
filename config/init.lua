@@ -12,6 +12,7 @@ config.font_size = 14
 config.default_cursor_style = "BlinkingBar"
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.canonicalize_pasted_newlines = "LineFeed"
+config.window_close_confirmation = "NeverPrompt"
 
 if util.is_windows() then
     config.default_prog = { "ubuntu2404.exe" }
