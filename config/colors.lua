@@ -3,12 +3,6 @@ local util = require("util")
 
 local M = {}
 
-local function merge(config, settings)
-    for _, setting in ipairs(settings) do
-        config[setting] = util.merge_tables(config[setting], M[setting])
-    end
-end
-
 local function color_mode()
     if wezterm.gui and wezterm.gui.get_appearance():find("Light") then
         return "Light"
@@ -152,8 +146,8 @@ M.colors = {
 }
 
 function M.register(config)
-    config.color_scheme = M.color_scheme
-    merge(config, {
+    util.merge_into_by_keys(config, M, {
+        "color_scheme",
         "colors",
         "window_frame"
     })

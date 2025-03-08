@@ -9,7 +9,7 @@ M.keys = {
 }
 
 function M.register(config)
-    config.keys = util.merge_tables(config.keys, M.keys)
+    util.merge_into_by_keys(config, M, { "keys" })
 end
 
 return M

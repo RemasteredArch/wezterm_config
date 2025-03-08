@@ -20,7 +20,7 @@ end
 local ok, overrides = pcall(require, "config.overrides")
 
 if ok then
-    config = util.merge_tables(config, overrides or {})
+    util.merge_into(config, overrides or {})
 end
 
 return config
