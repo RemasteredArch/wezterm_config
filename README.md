@@ -4,6 +4,8 @@ My [WezTerm](https://wezterm.org/) configuration.
 This config is built from scratch for the sake of fun and control;
 and comes with no guarantees of functionality or stability.
 
+Lots of behavior replicates [Windows Terminal](https://github.com/microsoft/terminal).
+
 ## Layout
 
 - `./` is the root of the config.
@@ -15,8 +17,7 @@ and comes with no guarantees of functionality or stability.
   On Windows, this file should be `%USERPROFILE/.wezterm.lua/`.
   This file does not need to be moved on Linux.
 - `./config/` is the home for all configuration-related Lua.
-- `./util/` holds useful Lua utilities,
-  largely or completely unrelated to WezTerm.
+- `./util/` holds useful Lua utilities.
 
 ## License
 
