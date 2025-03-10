@@ -1,7 +1,6 @@
 --- @alias some boolean|string|number|integer|function|table|thread|userdata|lightuserdata `any` but non-nil
 
 local wezterm = require("wezterm")
-assert(wezterm ~= nil)
 local M = {}
 
 --- Detects whether WezTerm is running on Microsoft Windows.
@@ -38,10 +37,12 @@ function M.merge_into_by_keys(into, from, keys)
 
     for _, key in ipairs(keys) do
         local from_type = type(from[key])
+        -- TODO: may be `nil` should be a legal value. It would effectively un-assign the key in
+        -- `into`, which might be desirable behavior.
         assert(from_type ~= "nil", "expecting `from` to have every key")
 
         -- Non-tables should be directly assigned:
-        if type(from_type) ~= "table" then
+        if from_type ~= "table" then
             into[key] = from[key]
             goto continue
         end
