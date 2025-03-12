@@ -1,6 +1,6 @@
-local wezterm = require("wezterm")
-local act = wezterm.action
 local util = require("util")
+local wezterm = util.wezterm()
+local act = wezterm.action
 
 local M = {}
 

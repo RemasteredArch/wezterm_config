@@ -1,5 +1,5 @@
-local wezterm = require("wezterm")
 local util = require("util")
+local wezterm = util.wezterm()
 
 local M = {}
 

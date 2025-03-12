@@ -1,7 +1,22 @@
 --- @alias some boolean|string|number|integer|function|table|thread|userdata|lightuserdata `any` but non-nil
 
 local wezterm = require("wezterm")
+--- @cast wezterm -Config, +Wezterm
 local M = {}
+
+
+--- Equivalent to `require("wezterm")`, but with proper editor types.
+---
+--- This is a workaround for proper LSP annotations. [Lua Language
+--- Server](https://luals.github.io/) will find `/wezterm.lua` in this repo and think it's the
+--- source for `require(wezterm)`, and type that as returning a [`Config`](lua://Config), not
+--- [`Wezterm`](lua://Wezterm). A cast can be used to manually change the type, and this function
+--- wraps that so it doesn't have to be repeated in every file.
+---
+--- @return Wezterm
+function M.wezterm()
+    return wezterm
+end
 
 --- Detects whether WezTerm is running on Microsoft Windows.
 ---
