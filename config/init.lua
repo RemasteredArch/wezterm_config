@@ -10,7 +10,9 @@ require("config.keys").register(config)
 config.font = wezterm.font("Cascadia Code")
 config.font_size = 14
 config.default_cursor_style = "BlinkingBar"
+--- @diagnostic disable-next-line:assign-type-mismatch This is a valid combination, the type def is wrong.
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+--- @diagnostic disable-next-line:assign-type-mismatch This is a valid option, the type def is missing.
 config.canonicalize_pasted_newlines = "LineFeed"
 config.window_close_confirmation = "NeverPrompt"
 
@@ -18,14 +20,17 @@ if util.is_windows() then
     config.default_prog = { "ubuntu2404.exe" }
 
     config.launch_menu = {
+        --- @diagnostic disable-next-line:missing-fields `SpawnCommands` is not yet a finished type def.
         {
             label = "PowerShell",
             args = { "powershell.exe", "-NoLogo" }
         },
+        --- @diagnostic disable-next-line:missing-fields `SpawnCommands` is not yet a finished type def.
         {
             label = "Command Prompt",
             args = { "cmd.exe" }
         },
+        --- @diagnostic disable-next-line:missing-fields `SpawnCommands` is not yet a finished type def.
         {
             label = "Ubuntu 24.04",
             args = { "ubuntu2404.exe" }
